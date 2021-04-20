@@ -6,13 +6,14 @@ O objetivo era entregar uma API que entregasse para Cyrela endpoints que eles pu
 
 ## Tecnologias utilizada
 
-[x] - Linguagem de programação C#
-[x] - Microsoft .NET Framework 5
-[x] - Arquitetura estilo API RestFull
-[x] - Entity Framework Core (ORM)
-[x] - Banco de dados em memória
-[x] - Swagger (Documentação da API)
-[x] - Git para versionamento do código
+- [x] Linguagem de programação C#
+- [x] Microsoft .NET Framework 5
+- [x] Arquitetura estilo API RestFull
+- [x] Entity Framework Core (ORM)
+- [x] Banco de dados em memória
+- [x] Swagger (Documentação da API)
+- [x] Visual Studio 2019 (IDE)
+- [x] Git para versionamento do código
 
 ## Rotas da aplicação
 
