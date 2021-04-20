@@ -3,6 +3,11 @@ namespace ApiCyrela.Models
 {
     public class Client
     {
+        public Client()
+        {
+            Id = Guid.NewGuid();
+        }
+
         public Guid Id { get; set; }
 
         public string Name { get; set; }

@@ -4,6 +4,11 @@ namespace ApiCyrela.Models
 {
     public class Propertie
     {
+        public Propertie()
+        {
+            Id = Guid.NewGuid();
+        }
+
         public Guid Id { get; set; }
 
         public ETypePropertie TypePropertie { get; set; }

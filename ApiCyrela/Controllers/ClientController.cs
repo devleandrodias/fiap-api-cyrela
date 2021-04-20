@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using ApiCyrela.Data;
 using ApiCyrela.Models;
@@ -18,19 +17,17 @@ namespace ApiCyrela.Controllers
         }
 
         [HttpPost]
-        public async Task Create([FromServices] ApplicationContext context)
+        public async Task Create([FromBody] Client client, [FromServices] ApplicationContext context)
         {
-
-            Client client = new()
-            {
-                Id = Guid.NewGuid(),
-                Name = "Leandro",
-                Salary = 5200,
-                Job = "PL Desenvolvedor Fullstack",
-                BirthDate = new DateTime(),
-            };
-
             context.Set<Client>().Add(client);
+
+            await context.SaveChangesAsync();
+        }
+
+        [HttpPost("bulk")]
+        public async Task CreateBulk([FromBody] List<Client> client, [FromServices] ApplicationContext context)
+        {
+            context.Set<Client>().AddRange(client);
 
             await context.SaveChangesAsync();
         }

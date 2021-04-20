@@ -1,29 +1,28 @@
 ﻿
-using ApiCyrela.Services;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using ApiCyrela.Data;
+using ApiCyrela.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ApiCyrela.Controllers
 {
     [ApiController, Route("v1/propertie")]
     public class PropertieController
     {
-        private readonly PropertieService _service = new();
-
-        public PropertieController(PropertieService service)
-        {
-            _service = service;
-        }
-
         [HttpGet]
-        public void GetAll()
+        public async Task<ActionResult<List<Propertie>>> GetAll([FromServices] ApplicationContext context)
         {
-            _service.GetAll();
+            return await context.Properties.AsNoTracking().ToListAsync();
         }
 
         [HttpPost]
-        public void Create()
+        public async Task Create([FromBody] Propertie propertie, [FromServices] ApplicationContext context)
         {
-            _service.Create();
+            context.Set<Propertie>().Add(propertie);
+
+            await context.SaveChangesAsync();
         }
     }
 }

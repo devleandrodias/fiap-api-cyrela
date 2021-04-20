@@ -20,6 +20,8 @@ namespace ApiCyrela
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
+
             services.AddControllers();
 
             services.AddDbContext<ApplicationContext>(opt => opt.UseInMemoryDatabase("Database"));
@@ -42,6 +44,12 @@ namespace ApiCyrela
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(x => x
+               .AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader()
+            );
 
             app.UseAuthorization();
 
